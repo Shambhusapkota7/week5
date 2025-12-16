@@ -1,6 +1,4 @@
-<?php
-require_once __DIR__ . "/includes/header.php";
-?>
+<?php require_once __DIR__ . "/includes/header.php"; ?>
 
 <p>Welcome to the Student Portfolio Manager application.</p>
 
@@ -10,6 +8,4 @@ require_once __DIR__ . "/includes/header.php";
     <li><a href="students.php">View Students</a></li>
 </ul>
 
-<?php
-require_once __DIR__ . "/includes/footer.php";
-?>
+<?php require_once __DIR__ . "/includes/footer.php"; ?>

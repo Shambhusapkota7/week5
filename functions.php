@@ -20,7 +20,7 @@ function saveStudent($name, $email, $skillsArray) {
 
 function uploadPortfolioFile($file) {
     $allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
-    $maxSize = 2 * 1024 * 1024; // 2MB
+    $maxSize = 2 * 1024 * 1024;
 
     if (!in_array($file["type"], $allowedTypes)) {
         throw new Exception("Only PDF, JPG, PNG files allowed.");
@@ -31,11 +31,11 @@ function uploadPortfolioFile($file) {
     }
 
     if (!is_dir("uploads")) {
-        throw new Exception("Uploads folder not found.");
+        mkdir("uploads");
     }
 
     $extension = pathinfo($file["name"], PATHINFO_EXTENSION);
-    $newName = strtolower(uniqid("portfolio_") . "." . $extension);
+    $newName = uniqid("portfolio_") . "." . $extension;
 
     move_uploaded_file($file["tmp_name"], "uploads/" . $newName);
     return $newName;

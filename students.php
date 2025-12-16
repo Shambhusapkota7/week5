@@ -1,8 +1,8 @@
+<?php require_once __DIR__ . "/includes/header.php"; ?>
+
+<h3>Students List</h3>
+
 <?php
-require_once __DIR__ . "/includes/header.php";
-
-
-
 if (!file_exists("students.txt")) {
     echo "<p>No students found.</p>";
 } else {
@@ -10,19 +10,12 @@ if (!file_exists("students.txt")) {
 
     foreach ($students as $student) {
         list($name, $email, $skills) = explode("|", trim($student));
-        $skillsArray = explode(",", $skills);
-
         echo "<h4>$name</h4>";
         echo "<p>Email: $email</p>";
-        echo "<p>Skills:</p><ul>";
-
-        foreach ($skillsArray as $skill) {
-            echo "<li>$skill</li>";
-        }
-
-        echo "</ul>";
+        echo "<p>Skills: $skills</p>";
+        echo "<hr>";
     }
 }
-
-require_once __DIR__ . "/includes/footer.php";
 ?>
+
+<?php require_once __DIR__ . "/includes/footer.php"; ?>

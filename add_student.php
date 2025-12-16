@@ -1,17 +1,15 @@
 <?php
 require_once __DIR__ . "/includes/header.php";
-
-
-require_once "functions.php";
+require_once __DIR__ . "/functions.php";
 
 $error = "";
 $success = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
-        $name = formatName($_POST["name"]);
-        $email = $_POST["email"];
-        $skills = cleanSkills($_POST["skills"]);
+        $name   = formatName($_POST["name"] ?? "");
+        $email  = $_POST["email"] ?? "";
+        $skills = cleanSkills($_POST["skills"] ?? "");
 
         if (empty($name) || empty($email) || empty($_POST["skills"])) {
             throw new Exception("All fields are required.");
@@ -32,8 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h3>Add Student</h3>
 
-<?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
-<?php if ($success) echo "<p style='color:green;'>$success</p>"; ?>
+<?php if ($error): ?>
+<p style="color:red;"><?= $error ?></p>
+<?php endif; ?>
+
+<?php if ($success): ?>
+<p style="color:green;"><?= $success ?></p>
+<?php endif; ?>
 
 <form method="post">
     Name: <input type="text" name="name"><br><br>
@@ -43,6 +46,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit">Save</button>
 </form>
 
-<?php require_once __DIR__ . "/includes/footer.php";
-
- ?>
+<?php require_once __DIR__ . "/includes/footer.php"; ?>
