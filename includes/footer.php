@@ -1,0 +1,4 @@
+<hr>
+<p>© Week 5 PHP Workshop</p>
+</body>
+</html>
